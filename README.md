@@ -1,4 +1,4 @@
-`# Qrowdfund v2.0.0
+# Qrowdfund v2.0.0
 
 ## How to build
 
