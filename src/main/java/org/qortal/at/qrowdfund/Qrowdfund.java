@@ -42,12 +42,10 @@ public class Qrowdfund {
 
         final int addrSleepMinutes = addrCounter++;
         final int addrGoalAmount = addrCounter++;
-
         final int addrSleepUntilTimestamp = addrCounter++;
         final int addrSleepUntilHeight = addrCounter++;
-
         final int addrFinalAmount = addrCounter++;
-
+        final int addrLastTxnTimestamp = addrCounter++;
         final int addrAwardeeAddress = addrCounter; addrCounter += 4;
 
         // Data segment
