@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.qortal</groupId>
+    <artifactId>qrowdfund</artifactId>
+    <version>2.0.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <build.timestamp>${maven.build.timestamp}</build.timestamp>
+        <skipTests>true</skipTests>
+
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
+        <ciyam-at.version>1.4.1</ciyam-at.version>
+        <qortal.version>4.4.0</qortal.version>
+        <jgiven.version>1.3.0</jgiven.version>
+    </properties>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <skipTests>${skipTests}</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>project.local</id>
+            <name>project</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- CIYAM AT (automated transactions) -->
+        <dependency>
+            <groupId>org.ciyam</groupId>
+            <artifactId>AT</artifactId>
+            <version>${ciyam-at.version}</version>
+        </dependency>
+        <!-- CIYAM AT (automated transactions) - test classes for testing support -->
+        <dependency>
+            <groupId>org.ciyam</groupId>
+            <artifactId>AT</artifactId>
+            <classifier>tests</classifier>
+            <type>test-jar</type>
+            <version>${ciyam-at.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.qortal</groupId>
+            <artifactId>qortal</artifactId>
+            <version>${qortal.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Maven SureFire & JUnit for testing -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JGiven for testing -->
+        <dependency>
+            <groupId>com.tngtech.jgiven</groupId>
+            <artifactId>jgiven-junit</artifactId>
+            <version>${jgiven.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
